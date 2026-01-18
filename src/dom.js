@@ -29,7 +29,7 @@ export function updateDisplay(memos) {
     checkbox.type = "checkbox";
     checkbox.checked = memoData.completed;
     checkbox.addEventListener("change", () => {
-      memoData.toggleCompleted(); // <-- THIS IS THE KEY
+      memoData.toggleCompleted();
       console.log(memoData.completed);
     });
 

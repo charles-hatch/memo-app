@@ -5,6 +5,18 @@ import { updateDisplay } from "./dom";
 const memos = [];
 //temp storage
 
+const lists = [];
+
+//LISTS
+export function storeList(list) {
+  lists.push(list);
+}
+
+export function getLists() {
+  return lists;
+}
+
+//MEMOS
 export function storeMemo(memo) {
   memos.push(memo);
 }

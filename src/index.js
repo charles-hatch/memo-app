@@ -3,10 +3,25 @@ import "./styles.css";
 
 // src/index.js
 import { createMemo } from "./memo.js";
-import { getMemos, storeMemo, deleteMemoById } from "./storage.js";
+import {
+  getMemos,
+  storeMemo,
+  deleteMemoById,
+  storeList,
+  getLists,
+} from "./storage.js";
 import { updateDisplay } from "./dom.js";
+import { addList } from "./lists.js";
 
 // create
+const defaultList = addList("Default");
+storeList(defaultList);
+console.log("Current list " + getLists());
+
+const secondList = addList("List 2!");
+storeList(secondList);
+console.log("Current list " + getLists());
+//by default memos are always added to default unless the user "opens" the other list, or chooses it as a dropdown?
 
 const memo1 = createMemo("Buy milk", "Done.");
 storeMemo(memo1);
@@ -37,28 +52,17 @@ newMemoBtn.addEventListener("click", () => {
   console.log("Current memos = " + memoState);
 });
 
-//add memo btn
-
-//to do list
-// figure out the checkbox
-//
+//TO DO LIST
+//ADD PROJECTS
+//Create a better "FORM" for inputting new memos/lists
 
 //pipeline
-// Build minimal DOM rendering (list memos, toggle, delete)
-
-// Wire DOM events through index.js only
-
 // Add project support (projects contain memo lists)
-
 // Refactor storage to support multiple lists
-
 // Add persistence (localStorage)
-
 // Clean up module boundaries and naming
-
 // Add basic styling and UX improvements
-
-// Final review and small refactors
+// Final review and small refactors, code cleanup, add comments
 
 // import odinImage from "./img/odin.png";
 // const image = document.createElement("img");

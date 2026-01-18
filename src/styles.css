@@ -1,10 +1,35 @@
 /* styles.css */
 body {
-  background-color: rgb(213, 171, 255);
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 200px 1fr;
 }
 
-#container {
-  /* background-color: white; */
+#header {
+  background-color: #494949;
+  grid-column: 1 / -1;
+  padding: 10px;
+}
+
+#header-text {
+  color: white;
+  font-size: 32px;
+}
+
+#sidebar {
+  padding: 10px;
+  background-color: rgb(217, 237, 254);
+  grid-row: 2;
+}
+
+#sidebar div {
+  margin: 10px;
+}
+
+#main {
+  grid-row: 2;
 }
 
 #memo-container {
