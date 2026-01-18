@@ -4,31 +4,44 @@ import "./styles.css";
 // src/index.js
 import { createMemo } from "./memo.js";
 import { getMemos, storeMemo, deleteMemoById } from "./storage.js";
-import "./dom.js";
 import { updateDisplay } from "./dom.js";
 
 // create
-const memo1 = createMemo("Buy milk", "Description");
+
+const memo1 = createMemo("Buy milk", "Done.");
 storeMemo(memo1);
-
-const memo2 = createMemo("Study JS", "Description");
-storeMemo(memo2);
-
-const memo3 = createMemo("Memo 3", "Description 3");
-storeMemo(memo3);
 //basic flow
 
-console.log(getMemos());
-//return our storage
+const memo2 = createMemo("Buy milk", "Not done");
+storeMemo(memo2);
 
+console.log(getMemos());
 memo1.toggleCompleted();
 console.log(memo1.completed); // true
 memo1.setTitle("Test");
 console.log(memo1);
 // TOGGLE AND TITLE SET TEST CODE
 
-const memoState = getMemos();
+const memoState = getMemos(); //return current array
 updateDisplay(memoState);
+console.log(memoState);
+
+const newMemoBtn = document.getElementById("new-memo-btn");
+newMemoBtn.addEventListener("click", () => {
+  const title = prompt("Memo title:");
+  if (!title) return;
+  const description = prompt("Memo description:");
+  const memo0 = createMemo(title, description);
+  storeMemo(memo0);
+  updateDisplay(memoState);
+  console.log("Current memos = " + memoState);
+});
+
+//add memo btn
+
+//to do list
+// figure out the checkbox
+//
 
 //pipeline
 // Build minimal DOM rendering (list memos, toggle, delete)

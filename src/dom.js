@@ -1,12 +1,12 @@
 //dom.js
+import { deleteMemoById } from "./storage.js";
 
 const container = document.getElementById("memo-container");
 
 export function updateDisplay(memos) {
   container.innerHTML = "";
 
-  for (let i = 0; i < memos.length; i++) {
-    const memoData = memos[i];
+  memos.forEach((memoData) => {
     const memoCard = document.createElement("p");
 
     const memoTitle = document.createElement("p");
@@ -18,19 +18,26 @@ export function updateDisplay(memos) {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "X";
     deleteBtn.addEventListener("click", () => {
-      alert("Clicked " + memoData.title);
+      console.log("Clicked delete on memo ID " + memoData.id);
+      deleteMemoById(memoData.id);
     });
 
-    memoCard.append(memoTitle, memoDescription, deleteBtn);
+    const label = document.createElement("label");
+    label.textContent = "Done";
 
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = memoData.completed;
+    checkbox.addEventListener("change", () => {
+      memoData.toggleCompleted(); // <-- THIS IS THE KEY
+      console.log(memoData.completed);
+    });
+
+    label.prepend(checkbox);
+
+    memoCard.append(memoTitle, memoDescription, deleteBtn, label);
     memoCard.classList.add("memo-card");
 
     container.append(memoCard);
-  }
+  });
 }
-
-//to render memos, our dom should
-//iterate through the array of memos
-//and post each one!
-
-// HOW DO WE DELETE?
