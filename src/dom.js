@@ -1,43 +1,63 @@
 //dom.js
 import { deleteMemoById } from "./storage.js";
 
-const container = document.getElementById("memo-container");
+const memoContainer = document.getElementById("memo-container");
+const listContainer = document.getElementById("list-container");
 
-export function updateDisplay(memos) {
-  container.innerHTML = "";
+export function updateDisplay(memos, lists) {
+  memoContainer.innerHTML = "";
+  listContainer.innerHTML = "";
+
+  lists.forEach((listData) => {
+    const listBtn = document.createElement("button");
+    listBtn.textContent = listData.title;
+    listBtn.addEventListener("click", () => {
+      console.log("List " + listBtn.title + " was clicked.");
+    });
+    listBtn.classList.add("list-btns");
+    listContainer.append(listBtn);
+
+    console.log("List");
+  });
 
   memos.forEach((memoData) => {
-    const memoCard = document.createElement("p");
+    const memoCard = document.createElement("div");
+    memoCard.classList.add("memo-card");
 
-    const memoTitle = document.createElement("p");
+    const header = document.createElement("div");
+    header.classList.add("memo-header");
+
+    const memoTitle = document.createElement("h3");
     memoTitle.textContent = memoData.title;
-
-    const memoDescription = document.createElement("p");
-    memoDescription.textContent = memoData.description;
 
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "X";
     deleteBtn.addEventListener("click", () => {
-      console.log("Clicked delete on memo ID " + memoData.id);
       deleteMemoById(memoData.id);
     });
 
+    header.append(memoTitle, deleteBtn);
+
+    const memoDescription = document.createElement("p");
+    memoDescription.textContent = memoData.description;
+
+    const footer = document.createElement("div");
+    footer.classList.add("memo-footer");
+
     const label = document.createElement("label");
-    label.textContent = "Done";
+    label.textContent = "Completed";
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.checked = memoData.completed;
     checkbox.addEventListener("change", () => {
       memoData.toggleCompleted();
-      console.log(memoData.completed);
     });
 
-    label.prepend(checkbox);
+    label.append(checkbox);
+    footer.append(label);
 
-    memoCard.append(memoTitle, memoDescription, deleteBtn, label);
-    memoCard.classList.add("memo-card");
-
-    container.append(memoCard);
+    memoCard.append(header, memoDescription, footer);
+    memoContainer.append(memoCard);
   });
 }

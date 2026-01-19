@@ -13,32 +13,41 @@ import {
 import { updateDisplay } from "./dom.js";
 import { addList } from "./lists.js";
 
-// create
+let currentList;
 const defaultList = addList("Default");
 storeList(defaultList);
-console.log("Current list " + getLists());
+setCurrentList(defaultList);
+currentList = defaultList;
+//expand into function?
 
 const secondList = addList("List 2!");
 storeList(secondList);
 console.log("Current list " + getLists());
 //by default memos are always added to default unless the user "opens" the other list, or chooses it as a dropdown?
 
-const memo1 = createMemo("Buy milk", "Done.");
+const memo1 = createMemo(
+  "Buy milk",
+  "Done but I need to remember for next week..",
+);
 storeMemo(memo1);
 //basic flow
 
-const memo2 = createMemo("Buy milk", "Not done");
+const memo2 = createMemo(
+  "Buy milk",
+  "Not done, I love Milk so much. Dont forget!",
+);
 storeMemo(memo2);
 
 console.log(getMemos());
 memo1.toggleCompleted();
 console.log(memo1.completed); // true
-memo1.setTitle("Test");
+memo1.setTitle("Homework");
 console.log(memo1);
 // TOGGLE AND TITLE SET TEST CODE
 
 const memoState = getMemos(); //return current array
-updateDisplay(memoState);
+const listState = getLists();
+updateDisplay(memoState, listState);
 console.log(memoState);
 
 const newMemoBtn = document.getElementById("new-memo-btn");
@@ -46,10 +55,21 @@ newMemoBtn.addEventListener("click", () => {
   const title = prompt("Memo title:");
   if (!title) return;
   const description = prompt("Memo description:");
-  const memo0 = createMemo(title, description);
-  storeMemo(memo0);
-  updateDisplay(memoState);
+  const memo = createMemo(title, description);
+  storeMemo(memo);
+  updateDisplay(memoState, listState);
   console.log("Current memos = " + memoState);
+});
+
+const newListBtn = document.getElementById("new-list-btn");
+newListBtn.addEventListener("click", () => {
+  const title = prompt("New List title:");
+  if (!title) return;
+  const newList = addList(title);
+  storeList(newList);
+  updateDisplay(memoState, listState);
+  console.log("New list added " + newList);
+  console.log("Current list " + getLists());
 });
 
 //TO DO LIST

@@ -28,6 +28,6 @@ export function getMemos() {
 export function deleteMemoById(id) {
   const index = memos.findIndex((m) => m.id === id);
   if (index !== -1) memos.splice(index, 1);
-  updateDisplay(memos);
+  updateDisplay(memos, lists);
   console.log("After delete, our list of memos is : " + memos);
 }
