@@ -2,9 +2,6 @@
 
 import { updateDisplay } from "./dom";
 
-const memos = [];
-//temp storage
-
 const lists = [];
 
 let currentList = null;
@@ -21,6 +18,7 @@ export function getLists() {
 export function setCurrentList(list, listTitle) {
   currentList = list;
   console.log("The Current List was changed to " + listTitle);
+  updateDisplay(currentList.memos, lists);
 }
 export function getCurrentList(list) {
   return currentList;
@@ -28,17 +26,17 @@ export function getCurrentList(list) {
 
 //MEMOS
 export function storeMemo(memo) {
-  memos.push(memo);
   currentList.memos.push(memo); // correct
 }
 
 export function getMemos() {
-  return memos;
+  console.log("The Current Selected List contains" + currentList.memos);
+  return currentList.memos;
 }
 
 export function deleteMemoById(id) {
-  const index = memos.findIndex((m) => m.id === id);
-  if (index !== -1) memos.splice(index, 1);
-  updateDisplay(memos, lists);
-  console.log("After delete, our list of memos is : " + memos);
+  const index = currentList.memos.findIndex((m) => m.id === id);
+  if (index !== -1) currentList.memos.splice(index, 1);
+  updateDisplay(currentList.memos, lists);
+  console.log("After delete, our list of memos is : " + currentList.memos);
 }

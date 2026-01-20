@@ -1,7 +1,5 @@
 // index.js
 import "./styles.css";
-
-// src/index.js
 import { createMemo } from "./memo.js";
 import {
   getMemos,
@@ -15,31 +13,26 @@ import {
 import { updateDisplay } from "./dom.js";
 import { addList } from "./lists.js";
 
-// let currentList;
 const defaultList = addList("Default");
 storeList(defaultList);
 setCurrentList(defaultList, defaultList.title);
-// currentList = getCurrentList();
-//expand into function?
+//sets our default list for page setup
 
+//TEST CODE BELOW
 const secondList = addList("List 2!");
 storeList(secondList);
-console.log("Current list " + getLists());
-//by default memos are always added to default unless the user "opens" the other list, or chooses it as a dropdown?
-
+//creates a second list for testing, list 2
 const memo1 = createMemo(
   "Buy milk",
   "Done but I need to remember for next week..",
 );
 storeMemo(memo1);
-//basic flow
 
 const memo2 = createMemo(
   "Buy milk",
   "Not done, I love Milk so much. Dont forget!",
 );
 storeMemo(memo2);
-
 console.log(getMemos());
 memo1.toggleCompleted();
 console.log(memo1.completed); // true
@@ -50,13 +43,13 @@ console.log(memo1);
 const memoState = getMemos(); //return current array
 const listState = getLists();
 updateDisplay(memoState, listState);
-console.log(memoState);
 
 console.log("Current list memos:", getCurrentList().memos);
 console.log("Current list: ", getCurrentList().title);
 console.log("Default list memos:", defaultList.memos);
 console.log("List 2 list memos:", secondList.memos);
 
+//BUTTONS
 const newMemoBtn = document.getElementById("new-memo-btn");
 newMemoBtn.addEventListener("click", () => {
   const title = prompt("Memo title:");
@@ -64,7 +57,7 @@ newMemoBtn.addEventListener("click", () => {
   const description = prompt("Memo description:");
   const memo = createMemo(title, description);
   storeMemo(memo);
-  updateDisplay(memoState, listState);
+  updateDisplay(getCurrentList().memos, listState);
   console.log("Current memos = " + memoState);
   console.log("Current list: ", getCurrentList().title);
   console.log("Default list memos:", defaultList.memos);
@@ -83,12 +76,8 @@ newListBtn.addEventListener("click", () => {
 });
 
 //TO DO LIST
-//ADD PROJECTS
 //Create a better "FORM" for inputting new memos/lists
-
 //pipeline
-// Add project support (projects contain memo lists)
-// Refactor storage to support multiple lists
 // Add persistence (localStorage)
 // Clean up module boundaries and naming
 // Add basic styling and UX improvements
