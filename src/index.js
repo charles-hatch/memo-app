@@ -10,12 +10,11 @@ import {
   setCurrentList,
   getCurrentList,
 } from "./storage.js";
-import { updateDisplay } from "./dom.js";
 import { addList } from "./lists.js";
 
 const defaultList = addList("Default");
 storeList(defaultList);
-setCurrentList(defaultList, defaultList.title);
+setCurrentList(defaultList);
 //sets our default list for page setup
 
 //TEST CODE BELOW
@@ -40,10 +39,6 @@ memo1.setTitle("Homework");
 console.log(memo1);
 // TOGGLE AND TITLE SET TEST CODE
 
-const memoState = getMemos(); //return current array
-const listState = getLists();
-updateDisplay(memoState, listState);
-
 console.log("Current list memos:", getCurrentList().memos);
 console.log("Current list: ", getCurrentList().title);
 console.log("Default list memos:", defaultList.memos);
@@ -57,8 +52,7 @@ newMemoBtn.addEventListener("click", () => {
   const description = prompt("Memo description:");
   const memo = createMemo(title, description);
   storeMemo(memo);
-  updateDisplay(getCurrentList().memos, listState);
-  console.log("Current memos = " + memoState);
+  console.log("Current memos = " + getCurrentList().memos);
   console.log("Current list: ", getCurrentList().title);
   console.log("Default list memos:", defaultList.memos);
   console.log("List 2 list memos:", secondList.memos);
@@ -70,7 +64,6 @@ newListBtn.addEventListener("click", () => {
   if (!title) return;
   const newList = addList(title);
   storeList(newList);
-  updateDisplay(memoState, listState);
   console.log("New list added " + newList);
   console.log("Current list " + getLists());
 });

@@ -7,36 +7,39 @@ const lists = [];
 let currentList = null;
 
 //LISTS
+export function setCurrentList(list) {
+  currentList = list;
+  updateDisplay();
+  console.log("The Current List was changed to " + currentList.title);
+}
+
 export function storeList(list) {
   lists.push(list);
+  updateDisplay();
+}
+
+export function storeMemo(memo) {
+  currentList.memos.push(memo);
+  updateDisplay();
 }
 
 export function getLists() {
   return lists;
 }
 
-export function setCurrentList(list, listTitle) {
-  currentList = list;
-  console.log("The Current List was changed to " + listTitle);
-  updateDisplay(currentList.memos, lists);
-}
-export function getCurrentList(list) {
+export function getCurrentList() {
   return currentList;
 }
 
 //MEMOS
-export function storeMemo(memo) {
-  currentList.memos.push(memo); // correct
-}
-
 export function getMemos() {
-  console.log("The Current Selected List contains" + currentList.memos);
+  console.log("The Current Selected List is " + currentList.title);
   return currentList.memos;
 }
 
 export function deleteMemoById(id) {
   const index = currentList.memos.findIndex((m) => m.id === id);
   if (index !== -1) currentList.memos.splice(index, 1);
-  updateDisplay(currentList.memos, lists);
-  console.log("After delete, our list of memos is : " + currentList.memos);
+  console.log("Memo deleted");
+  updateDisplay();
 }

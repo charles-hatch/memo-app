@@ -1,25 +1,37 @@
 //dom.js
-import { deleteMemoById, setCurrentList } from "./storage.js";
+import {
+  deleteMemoById,
+  setCurrentList,
+  getCurrentList,
+  getLists,
+} from "./storage.js";
 
 const memoContainer = document.getElementById("memo-container");
 const listContainer = document.getElementById("list-container");
+const listNameContainer = document.getElementById("list-name-container");
 
-export function updateDisplay(memos, lists) {
+export function updateDisplay() {
+  const currentList = getCurrentList();
+  if (!currentList) return;
+  const lists = getLists();
+
   memoContainer.innerHTML = "";
   listContainer.innerHTML = "";
+
+  listNameContainer.textContent = currentList.title;
 
   lists.forEach((listData) => {
     const listBtn = document.createElement("button");
     listBtn.textContent = listData.title;
     listBtn.addEventListener("click", () => {
       console.log("List " + listBtn.title + " was clicked.");
-      setCurrentList(listData, listData.title);
+      setCurrentList(listData);
     });
     listBtn.classList.add("list-btns");
     listContainer.append(listBtn);
   });
 
-  memos.forEach((memoData) => {
+  currentList.memos.forEach((memoData) => {
     const memoCard = document.createElement("div");
     memoCard.classList.add("memo-card");
 
