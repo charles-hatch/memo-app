@@ -7,7 +7,7 @@
   </head>
   <body>
     <div id="header">
-      <div id="header-text">My Memos</div>
+      <div id="header-text">My Memo Pad</div>
     </div>
     <div id="sidebar">
       <div id="sidebar-btns">
@@ -16,10 +16,22 @@
       </div>
     </div>
     <div id="main">
-      <button id="new-memo-btn">+ Add New Memo</button>
+      <button id="new-memo-btn">+</button>
       <div id="list-name-container"></div>
       <div id="memo-container"></div>
-      <button id="delete-list-btn">Delete List</button>
+    </div>
+
+    <div id="modal-overlay" tabindex="-1" hidden>
+      <div class="modal">
+        <h3 id="modal-title"></h3>
+
+        <input id="modal-input" type="text" placeholder="" />
+
+        <div class="modal-actions">
+          <button id="modal-cancel">Cancel</button>
+          <button id="modal-confirm">Confirm</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>

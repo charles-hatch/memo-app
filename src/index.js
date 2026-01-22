@@ -2,12 +2,8 @@
 import "./styles.css";
 import { createMemo } from "./memo.js";
 import { addList } from "./lists.js";
-import {
-  storeMemo,
-  storeList,
-  setCurrentList,
-  deleteCurrentList,
-} from "./storage.js";
+import { openModal } from "./modal.js";
+import { storeMemo, storeList, setCurrentList } from "./storage.js";
 
 const defaultList = addList("Default");
 storeList(defaultList);
@@ -40,10 +36,16 @@ newMemoBtn.addEventListener("click", () => {
 
 const newListBtn = document.getElementById("new-list-btn");
 newListBtn.addEventListener("click", () => {
-  const title = prompt("New List title:");
-  if (!title) return;
-  const newList = addList(title);
-  storeList(newList);
+  openModal({
+    title: "New List",
+    placeholder: "List name",
+    onSubmit: (value) => {
+      if (!value.trim()) return;
+      const list = addList(value.trim());
+      storeList(list);
+      setCurrentList(list);
+    },
+  });
 });
 
 //TO DO LIST

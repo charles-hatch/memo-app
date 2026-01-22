@@ -180,3 +180,74 @@ select {
 .list-dropdown button:hover {
   background-color: #f1f5f9;
 }
+
+#modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  width: 320px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* Floating Add Memo Button */
+#new-memo-btn {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+
+  background-color: #2563eb;
+  color: white;
+
+  font-size: 32px;
+  line-height: 0;
+
+  border: none;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+/* Hover */
+#new-memo-btn:hover {
+  background-color: #1d4ed8;
+}
+
+/* Active click */
+#new-memo-btn:active {
+  transform: scale(0.95);
+}

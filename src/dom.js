@@ -1,6 +1,6 @@
 //dom.js
 import { format, parseISO, isValid } from "date-fns";
-
+import { openModal } from "./modal.js";
 import {
   deleteMemoById,
   setCurrentList,
@@ -49,20 +49,22 @@ export function updateDisplay() {
       e.stopPropagation();
       dropdown.hidden = true;
 
-      const newTitle = prompt("Rename list:", listData.title);
-      if (!newTitle) return;
-
-      renameList(listData, newTitle);
+      openModal({
+        title: "Rename List",
+        value: listData.title,
+        onSubmit: (value) => renameList(listData, value),
+      });
     });
 
     deleteBtn.addEventListener("click", (e) => {
       e.stopPropagation();
       dropdown.hidden = true;
 
-      const ok = confirm("Delete this list and all contained memos?");
-      if (!ok) return;
-
-      deleteList(listData);
+      openModal({
+        title: "Delete this list?",
+        showInput: false,
+        onSubmit: () => deleteList(listData),
+      });
     });
 
     dropdown.append(renameBtn, deleteBtn);
