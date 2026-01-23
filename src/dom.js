@@ -12,7 +12,7 @@ import {
 
 const memoContainer = document.getElementById("memo-container");
 const listContainer = document.getElementById("list-container");
-const listNameContainer = document.getElementById("list-name-container");
+// const listNameContainer = document.getElementById("list-name-container");
 
 export function updateDisplay() {
   const currentList = getCurrentList();
@@ -22,7 +22,7 @@ export function updateDisplay() {
   memoContainer.innerHTML = "";
   listContainer.innerHTML = "";
 
-  listNameContainer.textContent = currentList.title;
+  // listNameContainer.textContent = currentList.title;
 
   lists.forEach((listData) => {
     const listRow = document.createElement("div");
@@ -143,7 +143,8 @@ export function updateDisplay() {
     label.append(checkbox);
     footer.append(label);
 
-    memoCard.append(header, memoDescription, footer);
+    memoCard.append(header, memoDescription, dueDateEl, footer);
+
     memoContainer.append(memoCard);
   });
 }

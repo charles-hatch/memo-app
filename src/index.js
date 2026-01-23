@@ -17,7 +17,7 @@ const memo1 = createMemo(
   "Description goes here",
   TEST_DUE_DATE,
 );
-// storeMemo(memo1);
+storeMemo(memo1);
 // const secondList = addList("List 2!");
 // storeList(secondList);
 // #### TESTING CODE #### //
@@ -25,12 +25,19 @@ const memo1 = createMemo(
 //BUTTONS
 const newMemoBtn = document.getElementById("new-memo-btn");
 newMemoBtn.addEventListener("click", () => {
-  const title = prompt("Memo title:");
-  if (!title) return;
-  const description = prompt("Memo description:");
-  // TEMP: no UI yet, so no due date
-  const memo = createMemo(title, description, null);
-  storeMemo(memo);
+  openModal({
+    title: "New Memo",
+    placeholder: "Enter your Memo's title... ",
+    textareaPlaceholder: "Enter your Description...",
+    showTextarea: true,
+    showDate: true,
+    onSubmit: ({ title, description }) => {
+      if (!title) return;
+
+      const memo = createMemo(title, description, null);
+      storeMemo(memo);
+    },
+  });
 });
 
 const newListBtn = document.getElementById("new-list-btn");
@@ -51,6 +58,7 @@ newListBtn.addEventListener("click", () => {
 // UPDATE THE INPUT FORM FOR MEMOS, then add due date. Functionality is already there. Just need to be posted to DOM.
 // due date?
 //priority dropdown
+//memo EDITING button!!!
 //if the list is empty, could we make a message like
 //"your list is empty, add it from below!"
 // we could have a ?? button to get help or info
