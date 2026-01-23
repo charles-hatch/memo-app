@@ -13,6 +13,8 @@ body {
   background-color: #494949;
   grid-column: 1 / -1;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 #header-text {
@@ -79,8 +81,25 @@ select {
 
 .memo-footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 8px;
+}
+
+.delete-btn {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 90%;
+  background: #f1f3f4;
+  color: #5f6368;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #fdecea;
+  color: #d93025;
 }
 
 /* =====================

@@ -106,6 +106,7 @@ export function updateDisplay() {
     deleteBtn.addEventListener("click", () => {
       deleteMemoById(memoData.id);
     });
+    deleteBtn.classList.add("delete-btn");
 
     header.append(memoTitle, deleteBtn);
 
@@ -130,8 +131,14 @@ export function updateDisplay() {
     const footer = document.createElement("div");
     footer.classList.add("memo-footer");
 
+    const editBtn = document.createElement("button");
+    editBtn.textContent = "Edit";
+    editBtn.addEventListener("click", () => {
+      alert();
+    });
+
     const label = document.createElement("label");
-    label.textContent = "Completed";
+    label.textContent = "Done";
 
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
@@ -141,7 +148,7 @@ export function updateDisplay() {
     });
 
     label.append(checkbox);
-    footer.append(label);
+    footer.append(editBtn, label);
 
     memoCard.append(header, memoDescription, dueDateEl, footer);
 

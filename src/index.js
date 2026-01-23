@@ -18,9 +18,6 @@ const memo1 = createMemo(
   TEST_DUE_DATE,
 );
 storeMemo(memo1);
-// const secondList = addList("List 2!");
-// storeList(secondList);
-// #### TESTING CODE #### //
 
 //BUTTONS
 const newMemoBtn = document.getElementById("new-memo-btn");
@@ -55,31 +52,13 @@ newListBtn.addEventListener("click", () => {
 });
 
 //TO DO LIST
-// UPDATE THE INPUT FORM FOR MEMOS, then add due date. Functionality is already there. Just need to be posted to DOM.
-// due date?
-//priority dropdown
 //memo EDITING button!!!
 //if the list is empty, could we make a message like
 //"your list is empty, add it from below!"
 // we could have a ?? button to get help or info
 // edit button for memos, to pull up an input box for creation
-//https://github.com/date-fns/date-fns
 //local storage
 //Create a better "FORM" for inputting new memos/lists
-//delete list warning popup design improved
 //clean and fix AI and spacing
 //code check
-//comments and GPT review
-
-// console.log("Current list memos:", getCurrentList().memos);
-// console.log("Current list: ", getCurrentList().title);
-// console.log("Default list memos:", defaultList.memos);
-// console.log("List 2 list memos:", secondList.memos);
-
-// const memo1 = createMemo("Memo Example", "Description goes here");
-// storeMemo(memo1);
-// memo1.toggleCompleted();
-// console.log(memo1.completed); // true
-// memo1.setTitle("Homework");
-// console.log(memo1);
-// // TOGGLE AND TITLE SET TEST CODE
+//comments and GPT r
