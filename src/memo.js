@@ -1,10 +1,8 @@
 //memo.js
 
-let memoID = 0;
-
 export function createMemo(title, description, dueDate) {
   return {
-    id: memoID++,
+    id: crypto.randomUUID(),
     title,
     description,
     dueDate,

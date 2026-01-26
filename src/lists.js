@@ -1,10 +1,8 @@
 //project.js
 
-let listID = 0;
-
 export function addList(title) {
   return {
-    id: listID++,
+    id: crypto.randomUUID(),
     title,
     memos: [],
     setTitle(value) {
