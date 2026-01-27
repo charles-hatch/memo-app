@@ -68,3 +68,5 @@ newListBtn.addEventListener("click", () => {
 //style form
 // fix modal spacing
 //unify fonts
+
+//LIST POPOUT? CONFIGURE?

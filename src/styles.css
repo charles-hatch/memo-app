@@ -338,3 +338,41 @@ body {
 [hidden] {
   display: none !important;
 }
+
+@media (max-width: 768px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 56px auto 1fr;
+  }
+
+  #sidebar {
+    grid-row: 2;
+    display: flex;
+    overflow-x: auto;
+  }
+
+  #list-container {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .list-row {
+    white-space: nowrap;
+  }
+
+  #main {
+    grid-row: 3;
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  #memo-container {
+    grid-template-columns: 1fr;
+  }
+
+  #new-memo-btn {
+    right: 16px;
+    bottom: 16px;
+  }
+}
