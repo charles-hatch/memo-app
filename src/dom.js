@@ -137,6 +137,7 @@ export function updateDisplay() {
 
     const editBtn = document.createElement("button");
     editBtn.textContent = "Edit";
+    editBtn.classList.add("btn", "btn-secondary");
     editBtn.addEventListener("click", () => {
       openModal({
         title: "Edit Memo",

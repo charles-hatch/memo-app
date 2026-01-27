@@ -70,3 +70,5 @@ newListBtn.addEventListener("click", () => {
 //unify fonts
 
 //LIST POPOUT? CONFIGURE?
+// SQUISHING AND RESIZING! DONT DESTROY
+// unselected lists arent visible at all

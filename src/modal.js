@@ -7,7 +7,8 @@ const cancelBtn = document.getElementById("modal-cancel");
 const confirmBtn = document.getElementById("modal-confirm");
 const textareaEl = document.getElementById("modal-textarea");
 const dateEl = document.getElementById("modal-date");
-
+cancelBtn.classList.add("btn", "btn-ghost");
+confirmBtn.classList.add("btn", "btn-primary");
 let onConfirm = null;
 
 export function openModal({
